@@ -10,7 +10,8 @@ namespace Problems
             //Name();
             //Sums();
             //Sums35();
-            SumOrProduct();
+            //SumOrProduct();
+            MultTables();
         }
 
         private static void HelloWorld()
@@ -93,7 +94,8 @@ namespace Problems
 
         private static void MultTables()
         {
-            const int limit = 26;
+            Console.Write("Enter limit: ");
+            int.TryParse(Console.ReadLine(), out var limit);
 
             Console.WriteLine();
             for (int i = 1; i <= limit; i++)
