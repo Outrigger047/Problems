@@ -90,5 +90,41 @@ namespace Problems
                 Console.WriteLine($"{(mode == "p" ? "Product" : "Sum")}: {running}");
             }
         }
+
+        private static void MultTables()
+        {
+            const int limit = 26;
+
+            Console.WriteLine();
+            for (int i = 1; i <= limit; i++)
+            {
+                Console.Write(" ");
+
+                for (int j = 1; j <= limit; j++)
+                {
+                    var product = (i * j).ToString();
+                    Console.Write(product);
+                    
+                    int whitespace;
+                    if (product.Length == 1)
+                    {
+                        whitespace = 3;
+                    }
+                    else if (product.Length == 2)
+                    {
+                        whitespace = 2;
+                    }
+                    else
+                    {
+                        whitespace = 1;
+                    }
+                    
+                    Console.CursorLeft = Console.CursorLeft + whitespace;
+                }
+
+                Console.WriteLine();
+                Console.WriteLine();
+            }
+        }
     }
 }
