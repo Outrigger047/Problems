@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Numerics;
 
 namespace Problems
 {
@@ -127,6 +127,17 @@ namespace Problems
                 Console.WriteLine();
                 Console.WriteLine();
             }
+        }
+
+        private static void AllPrimes()
+        {
+            Console.Write("Enter limit: ");
+            int.TryParse(Console.ReadLine(), out var limit);
+
+            // Sieve of Eratosthenes
+
+            // Build collection of composites
+            
         }
     }
 }
