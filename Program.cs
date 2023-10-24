@@ -14,11 +14,18 @@ namespace Problems
             MultTables();
         }
 
+        /// <summary>
+        /// Write a program that prints ‘Hello World’ to the screen.
+        /// </summary>
         private static void HelloWorld()
         {
             Console.WriteLine("sup world");
         }
 
+        /// <summary>
+        /// Write a program that asks the user for their name and greets them with their name.
+        /// Modify the previous program such that only the users Alice and Bob are greeted with their names.
+        /// </summary>
         private static void Name()
         {
             Console.WriteLine("What is your name?");
@@ -30,6 +37,9 @@ namespace Problems
             }
         }
 
+        /// <summary>
+        /// Write a program that asks the user for a number n and prints the sum of the numbers 1 to n
+        /// </summary>
         private static void Sums()
         {
             Console.Write("Enter number: ");
@@ -44,6 +54,9 @@ namespace Problems
             Console.WriteLine($"Sum: {sum}");
         }
 
+        /// <summary>
+        /// Modify the previous program such that only multiples of three or five are considered in the sum, e.g. 3, 5, 6, 9, 10, 12, 15 for n=17
+        /// </summary>
         private static void Sums35()
         {
             Console.Write("Enter number: ");
@@ -131,13 +144,22 @@ namespace Problems
 
         private static void AllPrimes()
         {
+            
+        }
+
+        private static void Sieve()
+        {
             Console.Write("Enter limit: ");
             int.TryParse(Console.ReadLine(), out var limit);
 
             // Sieve of Eratosthenes
 
-            // Build collection of composites
-            
+            // Build a collection iteratively of composite numbers
+            // Given a limit n and an integer p starting with 2, mark all multiples of p up to n
+            for (int i = 2; i < limit; i++)
+            {
+                
+            }
         }
     }
 }
