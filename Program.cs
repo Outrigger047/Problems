@@ -11,7 +11,8 @@ namespace Problems
             //Sums();
             //Sums35();
             //SumOrProduct();
-            MultTables();
+            //MultTables();
+            Sieve();
         }
 
         /// <summary>
@@ -55,7 +56,8 @@ namespace Problems
         }
 
         /// <summary>
-        /// Modify the previous program such that only multiples of three or five are considered in the sum, e.g. 3, 5, 6, 9, 10, 12, 15 for n=17
+        /// Modify the previous program such that only multiples of three or five are considered in the sum, 
+        /// e.g. 3, 5, 6, 9, 10, 12, 15 for n=17
         /// </summary>
         private static void Sums35()
         {
@@ -79,6 +81,10 @@ namespace Problems
             Console.WriteLine($"Sum: {sum}");
         }
 
+        /// <summary>
+        /// Write a program that asks the user for a number n and gives them the possibility to choose between
+        /// computing the sum and computing the product of 1,…,n.
+        /// </summary>
         private static void SumOrProduct()
         {
             Console.Write("Enter number: ");
@@ -105,6 +111,9 @@ namespace Problems
             }
         }
 
+        /// <summary>
+        /// Write a program that prints a multiplication table for numbers up to 12.
+        /// </summary>
         private static void MultTables()
         {
             Console.Write("Enter limit: ");
@@ -142,23 +151,45 @@ namespace Problems
             }
         }
 
+        /// <summary>
+        /// Write a program that prints all prime numbers. (Note: if your programming language does not
+        /// support arbitrary size numbers, printing all primes up to the largest number you can easily
+        /// represent is fine too.)
+        /// </summary>
         private static void AllPrimes()
         {
             
         }
 
+        /// <summary>
+        /// Sieve of Eratosthenes
+        /// 
+        /// NOT in the list, but trying out a way to generate primes up to a given limit.
+        /// </summary>
         private static void Sieve()
         {
             Console.Write("Enter limit: ");
             int.TryParse(Console.ReadLine(), out var limit);
 
-            // Sieve of Eratosthenes
-
-            // Build a collection iteratively of composite numbers
+            // Iteratively build a collection of composite numbers
             // Given a limit n and an integer p starting with 2, mark all multiples of p up to n
+            var composites = new bool[limit + 1];
+            composites [2] = true;
+            
             for (int i = 2; i < limit; i++)
             {
-                
+                for (int j = 2; i * j <= limit; j++)
+                {
+                    composites[i * j] = true; 
+                }
+            }
+
+            for (int i = 0; i < limit; i++)
+            {
+                if (!composites[i])
+                {
+                    Console.Write(i + " ");
+                }
             }
         }
     }
