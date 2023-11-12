@@ -174,17 +174,18 @@ namespace Problems
             // Iteratively build a collection of composite numbers
             // Given a limit n and an integer p starting with 2, mark all multiples of p up to n
             var composites = new bool[limit + 1];
-            composites [2] = true;
-            
+
+            // Outer loop is our list of integers p (starting at 2) through limit n
             for (int i = 2; i < limit; i++)
             {
+                // Inner loop is multiples of p
                 for (int j = 2; i * j <= limit; j++)
                 {
                     composites[i * j] = true; 
                 }
             }
 
-            for (int i = 0; i < limit; i++)
+            for (int i = 2; i < limit; i++)
             {
                 if (!composites[i])
                 {
