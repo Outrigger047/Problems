@@ -12,8 +12,9 @@ namespace Problems
             //Sums35();
             //SumOrProduct();
             //MultTables();
+            AllPrimes();
             //Sieve();
-            GuessingGame();
+            //GuessingGame();
         }
 
         /// <summary>
@@ -159,7 +160,28 @@ namespace Problems
         /// </summary>
         private static void AllPrimes()
         {
-            
+            BigInteger p = 2;
+            do
+            {
+                bool composite = false;
+
+                for (BigInteger i = p - 1; i > 1; i -= 1)
+                {
+                    if (i != 1 && p % i == 0)
+                    {
+                        composite = true;
+                        break;
+                    }
+                }
+
+                if (!composite)
+                {
+                    Console.Write($"{p} ");
+                }                
+                
+                p += 1;
+            }
+            while(1 == 1);
         }
 
         /// <summary>
@@ -239,6 +261,14 @@ namespace Problems
 
                 Console.WriteLine($"{numTries} guesses");
             }
+        }
+
+        /// <summary>
+        /// Write a program that prints the next 20 leap years.
+        /// </summary>
+        private static void LeapYears()
+        {
+            
         }
     }
 }
