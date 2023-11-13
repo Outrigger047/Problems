@@ -12,7 +12,8 @@ namespace Problems
             //Sums35();
             //SumOrProduct();
             //MultTables();
-            Sieve();
+            //Sieve();
+            GuessingGame();
         }
 
         /// <summary>
@@ -191,6 +192,52 @@ namespace Problems
                 {
                     Console.Write(i + " ");
                 }
+            }
+        }
+
+        /// <summary>
+        /// Write a guessing game where the user has to guess a secret number. After every guess
+        /// the program tells the user whether their number was too large or too small. At the end
+        /// the number of tries needed should be printed. It counts only as one try if they input
+        /// the same number multiple times consecutively.
+        /// </summary>
+        private static void GuessingGame()
+        {
+            const int limit = 100;
+            var secretNumber = new Random().Next(limit);
+            int numTries = 0;
+            var guesses = new List<int>();
+            bool correct = false;
+            
+            while (!correct)
+            {
+                Console.Write("Guess the secret number: ");
+                int.TryParse(Console.ReadLine(), out var currentGuess);
+                
+                if (guesses.Contains(currentGuess))
+                {
+                    Console.WriteLine($"Already guessed {currentGuess}");
+                    continue;
+                }
+                
+                guesses.Add(currentGuess);
+                numTries += 1;
+
+                if (currentGuess == secretNumber)
+                {
+                    correct = true;
+                    Console.WriteLine($"Correct! The secret number was {secretNumber}!");
+                }
+                else if (currentGuess < secretNumber)
+                {
+                    Console.WriteLine("Your guess is less than the secret number!");
+                }
+                else if (currentGuess > secretNumber)
+                {
+                    Console.WriteLine("Your guess is greater than the secret number!");
+                }
+
+                Console.WriteLine($"{numTries} guesses");
             }
         }
     }
