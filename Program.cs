@@ -1,20 +1,32 @@
-﻿namespace Problems
+﻿using System.Reflection;
+
+namespace Problems
 {
     public partial class Program
     {
         public static void Main(string[] args)
         {
-            //HelloWorld();
-            //Name();
-            //Sums();
-            //Sums35();
-            //SumOrProduct();
-            //MultTables();
-            //AllPrimes();
-            //Sieve();
-            //GuessingGame();
-            //LeapYears();
-            AlternatingSeries();
+            // Build a collection of all methods
+            var methods = Type.GetType("Problems.Program").GetMethods(BindingFlags.NonPublic | BindingFlags.Static).ToList();
+
+            // Print list of all pairs; ask for user input to select method to run
+            for (int i = 1; i < methods.Count + 1; i += 1)
+            {
+                Console.WriteLine($"  ({i}): {methods[i - 1].Name}");
+            }
+
+            Console.Write("Choose a method number to run: ");
+            int.TryParse(Console.ReadLine(), out var userSelection);
+
+            // Dynamically invoke method based on user input
+            try
+            {
+                methods[userSelection - 1].Invoke(null, null);
+            }
+            catch(Exception)
+            {
+                Console.WriteLine("Bad method number");
+            }
         }
     }
 }
