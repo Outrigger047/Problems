@@ -8,18 +8,38 @@ namespace Problems
         /// <summary>
         /// Gets a number of integer values from the user via the console
         /// </summary>
-        /// <param name="numInputs">Number of inputs to get</param>
+        /// <param name="collectionCount">Number of inputs to get</param>
         /// <returns>List of user-provided integer values</returns>
-        public static List<int> GetNumsCollectionConsole(int numInputs)
+        public static List<int> GetNumsCollectionConsole(int collectionCount)
         {
-            Console.WriteLine($"Enter {numInputs} integers");
-
             var numbers = new List<int>();
-            for (int i = 0; i < numInputs; i += 1)
+
+            Console.WriteLine($"Enter {collectionCount} integers");
+
+            for (int i = 0; i < collectionCount; i += 1)
             {
                 Console.Write($"{i + 1}: ");
                 int.TryParse(Console.ReadLine(), out var number);
                 numbers.Add(number);
+            }
+
+            return numbers;
+        }
+
+        /// <summary>
+        /// Gets a number of integer values from the RNG
+        /// </summary>
+        /// <param name="collectionCount">Number of integers to generate</param>
+        /// <param name="maxValue">Max value of each integer</param>
+        /// <returns>List of RNG-provided integer values</returns>
+        public static List<int> GetNumsCollectionRandom(int collectionCount, int maxValue)
+        {
+            var numbers = new List<int>();
+            var rng = new Random();
+
+            for (int i = 0; i < collectionCount; i += 1)
+            {
+                numbers.Add(rng.Next(maxValue));
             }
 
             return numbers;
