@@ -50,6 +50,8 @@ namespace Problems
                 {
                     Console.Write($"{number} ");
                 }
+
+                Console.WriteLine();
             }
 
             return numbers;
