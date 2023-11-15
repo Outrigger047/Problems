@@ -7,15 +7,7 @@ namespace Problems
         /// </summary>
         private static void ListLargestElement()
         {
-            Console.WriteLine("Enter 10 integers");
-
-            var numbers = new List<int>();
-            for (int i = 0; i < 10; i += 1)
-            {
-                Console.Write($"{i + 1}: ");
-                int.TryParse(Console.ReadLine(), out var number);
-                numbers.Add(number);
-            }
+            var numbers = ListHelpers.GetNumsCollectionRandom(20, 100);
 
             int runningLargest = 0;
             foreach (var number in numbers)
