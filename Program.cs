@@ -12,9 +12,10 @@ namespace Problems
             //Sums35();
             //SumOrProduct();
             //MultTables();
-            AllPrimes();
+            //AllPrimes();
             //Sieve();
             //GuessingGame();
+            LeapYears();
         }
 
         /// <summary>
@@ -268,7 +269,23 @@ namespace Problems
         /// </summary>
         private static void LeapYears()
         {
+            var currentYear = DateTime.Now.Year;
+            var foundLeapYears = new List<int>();
             
+            var checkYear = currentYear;
+
+            do
+            {
+                if (checkYear % 4 == 0 && (checkYear % 100 != 0 || checkYear % 400 == 0))
+                {
+                    foundLeapYears.Add(checkYear);
+                }
+
+                checkYear += 1;
+            }
+            while (foundLeapYears.Count < 3);
+
+            Console.WriteLine($"Next 3 leap years: {foundLeapYears[0]}, {foundLeapYears[1]}, {foundLeapYears[2]}");
         }
     }
 }
