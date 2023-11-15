@@ -15,7 +15,8 @@ namespace Problems
             //AllPrimes();
             //Sieve();
             //GuessingGame();
-            LeapYears();
+            //LeapYears();
+            AlternatingSeries();
         }
 
         /// <summary>
@@ -291,6 +292,25 @@ namespace Problems
             {
                 Console.Write($"{year} ");
             }
+        }
+
+        /// <summary>
+        /// Write a program that computes the sum of an alternating series where each element
+        /// of the series is an expression of the form ((-1)^(k+1))/(2*k-1) for each value of k
+        /// from 1 to 1000000, multiplied by 4.
+        /// </summary>
+        private static void AlternatingSeries()
+        {
+            double runningSum = 0;
+
+            for (int k = 0; k < 1000000; k += 1)
+            {
+                runningSum += Math.Pow(-1, k + 1) / (2 * k - 1);
+            }
+
+            runningSum *= 4;
+
+            Console.WriteLine(runningSum);
         }
     }
 }
