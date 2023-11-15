@@ -283,9 +283,14 @@ namespace Problems
 
                 checkYear += 1;
             }
-            while (foundLeapYears.Count < 3);
+            while (foundLeapYears.Count < 20);
 
-            Console.WriteLine($"Next 3 leap years: {foundLeapYears[0]}, {foundLeapYears[1]}, {foundLeapYears[2]}");
+            Console.WriteLine("Next 20 leap years:");
+            
+            foreach (int year in foundLeapYears)
+            {
+                Console.Write($"{year} ");
+            }
         }
     }
 }
