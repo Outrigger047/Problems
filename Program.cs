@@ -26,6 +26,7 @@ namespace Problems
                 try
                 {
                     methods[userSelection - 1].Invoke(null, null);
+                    Console.WriteLine();
                 }
                 catch(Exception)
                 {
