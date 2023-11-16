@@ -140,5 +140,32 @@ namespace Problems
 
             Console.WriteLine($"'{input}' {(isPalindrome ? "is" : "is not")} a palindrome");
         }
+
+        /*
+        * Write three functions that compute the sum of the numbers in a list: using a for-loop,
+        * a while-loop and recursion. (Subject to availability of these constructs in your language
+        * of choice.)
+        *
+        * My note: I already did for-loop total in RunningTotal, so I will do while-loop and recursion
+        * below.
+        */
+
+        /// <summary>
+        /// While-loop sum of numbers in a list.
+        /// </summary>
+        private static void WhileSums()
+        {
+            var numbers = ListHelpers.GetNumsCollectionRandom(20, 100);
+
+            int runningTotal = 0;
+            int i = 0;
+            while (i < numbers.Count)
+            {
+                runningTotal += numbers[i];
+                i += 1;
+            }
+
+            Console.WriteLine($"Total: {runningTotal}");
+        }
     }
 }
