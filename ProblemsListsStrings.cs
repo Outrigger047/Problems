@@ -102,5 +102,21 @@ namespace Problems
                 }
             }
         }
+
+        /// <summary>
+        /// Write a function that computes the running total of a list.
+        /// </summary>
+        private static void RunningTotal()
+        {
+            var numbers = ListHelpers.GetNumsCollectionRandom(20, 100);
+
+            int runningTotal = 0;
+            foreach (var number in numbers)
+            {
+                runningTotal += number;
+            }
+
+            Console.WriteLine($"Total: {runningTotal}");
+        }
     }
 }
