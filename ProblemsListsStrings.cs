@@ -118,5 +118,27 @@ namespace Problems
 
             Console.WriteLine($"Total: {runningTotal}");
         }
+
+        /// <summary>
+        /// Write a function that tests whether a string is a palindrome.
+        /// </summary>
+        private static void Palindrome()
+        {
+            Console.Write("Enter string: ");
+            var input = Console.ReadLine();
+            var inputChars = input.ToLower().Replace(" ", string.Empty).ToCharArray();
+
+            bool isPalindrome = true;
+            for (int i = 0; i < inputChars.Length / 2; i += 1)
+            {
+                if (inputChars[i] != inputChars[inputChars.Length - 1 - i])
+                {
+                    isPalindrome = false;
+                    break;
+                }
+            }
+
+            Console.WriteLine($"'{input}' {(isPalindrome ? "is" : "is not")} a palindrome");
+        }
     }
 }
