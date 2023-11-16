@@ -56,5 +56,24 @@ namespace Problems
 
             return numbers;
         }
+
+        /// <summary>
+        /// Recursively calculates total sum of a list of numbers
+        /// </summary>
+        /// <param name="numbers">List of numbers to add</param>
+        /// <returns>Total sum of all the numbers in the list</returns>
+        public static int AddNums(List<int> numbers)
+        {
+            if (numbers.Count > 0)
+            {
+                int first = numbers[0];
+                numbers.RemoveAt(0);
+                return first + AddNums(numbers);
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

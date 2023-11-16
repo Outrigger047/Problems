@@ -167,5 +167,18 @@ namespace Problems
 
             Console.WriteLine($"Total: {runningTotal}");
         }
+
+        /// <summary>
+        /// Recursion sums of numbers in a list.
+        /// </summary>
+        /// <remarks>
+        /// Recursion is in external helper method <see cref="ListHelpers.AddNums(List{int})"/>.
+        /// </remarks>
+        private static void RecursionSums()
+        {
+            var numbers = ListHelpers.GetNumsCollectionRandom(20, 100);
+            var sum = ListHelpers.AddNums(numbers);
+            Console.WriteLine($"Sum: {sum}");
+        }
     }
 }
