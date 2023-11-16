@@ -1,3 +1,5 @@
+using System.Collections.Concurrent;
+
 namespace Problems
 {
     public partial class Program
@@ -58,6 +60,32 @@ namespace Problems
             }
 
             Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Write a function that checks whether an element occurs in a list.
+        /// </summary>
+        private static void FindElement()
+        {
+            var numbers = ListHelpers.GetNumsCollectionRandom(20, 100);
+
+            Console.Write("Enter number to find: ");
+            int.TryParse(Console.ReadLine(), out var numToFind);
+
+            bool found = false;
+            int foundIndex = -1;
+            for (int i = 0; i < numbers.Count; i += 1)
+            {
+                if (numbers[i] == numToFind)
+                {
+                    found = true;
+                    foundIndex = i;
+                    break;
+                }
+            }
+
+            // Kind of ugly string interpolation...
+            Console.WriteLine($"Element '{numToFind}' {(found ? "found" : "not found")} {(found ? "at index" : "")} {(found ? foundIndex : "")}");
         }
     }
 }
