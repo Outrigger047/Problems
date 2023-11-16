@@ -1,5 +1,3 @@
-using System.Collections.Concurrent;
-
 namespace Problems
 {
     public partial class Program
@@ -86,6 +84,23 @@ namespace Problems
 
             // Kind of ugly string interpolation...
             Console.WriteLine($"Element '{numToFind}' {(found ? "found" : "not found")} {(found ? "at index" : "")} {(found ? foundIndex : "")}");
+        }
+
+        /// <summary>
+        /// Write a function that returns the elements on odd positions in a list.
+        /// </summary>
+        private static void OddElements()
+        {
+            var numbers = ListHelpers.GetNumsCollectionRandom(20, 100);
+
+            Console.Write("Odd-Indexed Elements: ");
+            for (int i = 0; i < numbers.Count; i += 1)
+            {
+                if (i % 2 != 0)
+                {
+                    Console.Write($"{numbers[i]} ");
+                }
+            }
         }
     }
 }
