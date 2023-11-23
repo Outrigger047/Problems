@@ -26,29 +26,22 @@ namespace Problems
         /// </summary>
         private static void ReverseList()
         {
-            var numbers = ListHelpers.GetNumsCollectionRandom(20, 100);
+            var numbers = ListHelpers.GetNumsCollectionRandom(30, 100);
 
             // Storage for value being replaced
             int swapSpot;
 
-            if (numbers.Count > 2)
+            int lowIndex = 0;
+            int highIndex = numbers.Count - 1;
+
+            while (lowIndex < highIndex)
             {
-                for (int i = 0; i < numbers.Count / 2; i += 1)
-                {
-                    var distance = numbers.Count - 1 - i;
-                    if (distance > 1)
-                    {
-                        swapSpot = numbers[numbers.Count - i - 1];
-                        numbers[numbers.Count - i - 1] = numbers[i];
-                        numbers[i] = swapSpot;
-                    }
-                }
-            }
-            else if (numbers.Count == 2)
-            {
-                swapSpot = numbers[numbers.Count - 1];
-                numbers[numbers.Count - 1] = numbers[0];
-                numbers[0] = swapSpot;
+                swapSpot = numbers[highIndex];
+                numbers[highIndex] = numbers[lowIndex];
+                numbers[lowIndex] = swapSpot;
+
+                lowIndex += 1;
+                highIndex -= 1;
             }
 
             Console.Write($"Reversed: ");
@@ -179,6 +172,19 @@ namespace Problems
             var numbers = ListHelpers.GetNumsCollectionRandom(20, 100);
             var sum = ListHelpers.AddNums(numbers);
             Console.WriteLine($"Sum: {sum}");
+        }
+        
+        /// <summary>
+        /// Write a function on_all that applies a function to every element of a list. Use it to print
+        /// the first twenty perfect squares. The perfect squares can be found by multiplying each natural
+        /// number with itself. The first few perfect squares are 1*1= 1, 2*2=4, 3*3=9, 4*4=16. Twelve for
+        /// example is not a perfect square because there is no natural number m so that m*m=12. (This
+        /// question is tricky if your programming language makes it difficult to pass functions as 
+        /// arguments.)
+        /// </summary>
+        private static void OnAll()
+        {
+            
         }
     }
 }
