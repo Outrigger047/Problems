@@ -75,5 +75,28 @@ namespace Problems
                 return 0;
             }
         }
+
+        /// <summary>
+        /// Applies a function to every element in a list
+        /// </summary>
+        /// <param name="numbers">Collection of numbers</param>
+        /// <param name="function">Function to apply to every number</param>
+        public static void OnAll(List<int> numbers, Action<int> function)
+        {
+            foreach (var number in numbers)
+            {
+                function(number);
+            }
+        }
+
+        /// <summary>
+        /// Prints the square of a number
+        /// </summary>
+        /// <param name="num">Number to square</param>
+        /// <returns>Number multiplied by itself</returns>
+        public static void PrintSquare(int num)
+        {
+            Console.Write($"{num * num} ");
+        }
     }
 }

@@ -182,9 +182,16 @@ namespace Problems
         /// question is tricky if your programming language makes it difficult to pass functions as 
         /// arguments.)
         /// </summary>
-        private static void OnAll()
+        private static void PerfectSquares()
         {
-            
+            var firstTwenty = new List<int>();
+            for (int i = 1; i <= 20; i += 1)
+            {
+                firstTwenty.Add(i);
+            }
+
+            Console.Write("First 20 perfect squares: ");
+            ListHelpers.OnAll(firstTwenty, ListHelpers.PrintSquare);
         }
     }
 }
