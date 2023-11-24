@@ -193,5 +193,31 @@ namespace Problems
             Console.Write("First 20 perfect squares: ");
             ListHelpers.OnAll(firstTwenty, ListHelpers.PrintSquare);
         }
+
+        /// <summary>
+        /// Write a function that concatenates two lists. [a,b,c], [1,2,3] -> [a,b,c,1,2,3]
+        /// </summary>
+        private static void CatList()
+        {
+            var firstList = ListHelpers.GetNumsCollectionRandom(5, 100);
+            var secondList = ListHelpers.GetNumsCollectionRandom(5, 100);
+
+            var combinedList = new List<int>();
+            foreach (var number in firstList)
+            {
+                combinedList.Add(number);
+            }
+
+            foreach (var number in secondList)
+            {
+                combinedList.Add(number);
+            }
+
+            Console.Write("Combined list: ");
+            foreach (var number in combinedList)
+            {
+                Console.Write($"{number} ");
+            }
+        }
     }
 }
