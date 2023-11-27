@@ -219,5 +219,38 @@ namespace Problems
                 Console.Write($"{number} ");
             }
         }
+
+        /// <summary>
+        /// Write a function that combines two lists by alternatingly taking elements, e.g. [a,b,c], 
+        /// [1,2,3] -> [a,1,b,2,c,3].
+        /// </summary>
+        private static void CatListAlternate()
+        {
+            var firstList = ListHelpers.GetNumsCollectionRandom(10, 100);
+            var secondList = ListHelpers.GetNumsCollectionRandom(15, 100);
+
+            var combinedList = new List<int>();
+
+            while (firstList.Any() || secondList.Any())
+            {
+                if (firstList.Any())
+                {
+                    combinedList.Add(firstList.First());
+                    firstList.RemoveAt(0);
+                }
+
+                if (secondList.Any())
+                {
+                    combinedList.Add(secondList.First());
+                    secondList.RemoveAt(0);
+                }
+            }
+
+            Console.Write("Combined list: ");
+            foreach (var number in combinedList)
+            {
+                Console.Write($"{number} ");
+            }
+        }
     }
 }
