@@ -252,5 +252,49 @@ namespace Problems
                 Console.Write($"{number} ");
             }
         }
+
+        /// <summary>
+        /// Write a function that merges two sorted lists into a new sorted list. [1,4,6],[2,3,5] -> 
+        /// [1,2,3,4,5,6]. You can do this quicker than concatenating them followed by a sort.
+        /// </summary>
+        private static void MergeSorted()
+        {
+            var firstList = ListHelpers.GetNumsCollectionRandom(10, 100, sort: true);
+            var secondList = ListHelpers.GetNumsCollectionRandom(35, 100, sort: true);
+
+            var combinedList = new List<int>();
+
+            while (firstList.Any() && secondList.Any())
+            {
+                if (firstList[0] < secondList[0])
+                {
+                    combinedList.Add(firstList.First());
+                    firstList.RemoveAt(0);
+                }
+                else
+                {
+                    combinedList.Add(secondList.First());
+                    secondList.RemoveAt(0);
+                }
+            }
+
+            while (firstList.Any())
+            {
+                combinedList.Add(firstList.First());
+                firstList.RemoveAt(0);
+            }
+
+            while (secondList.Any())
+            {
+                combinedList.Add(secondList.First());
+                secondList.RemoveAt(0);
+            }
+
+            Console.Write("Combined list: ");
+            foreach (var number in combinedList)
+            {
+                Console.Write($"{number} ");
+            }
+        }
     }
 }

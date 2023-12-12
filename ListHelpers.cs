@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Problems
 {
     /// <summary>
@@ -31,8 +33,13 @@ namespace Problems
         /// </summary>
         /// <param name="collectionCount">Number of integers to generate</param>
         /// <param name="maxValue">Max value of each integer</param>
+        /// <param name="sort">Sort the list</param>
+        /// <param name="writeConsole">Optionally write output to the console</param>
         /// <returns>List of RNG-provided integer values</returns>
-        public static List<int> GetNumsCollectionRandom(int collectionCount, int maxValue, bool writeConsole = true)
+        public static List<int> GetNumsCollectionRandom(int collectionCount, 
+                                                        int maxValue, 
+                                                        bool sort = false, 
+                                                        bool writeConsole = true)
         {
             var numbers = new List<int>();
             var rng = new Random();
@@ -40,6 +47,11 @@ namespace Problems
             for (int i = 0; i < collectionCount; i += 1)
             {
                 numbers.Add(rng.Next(maxValue));
+            }
+
+            if (sort)
+            {
+                numbers.Sort();
             }
 
             if (writeConsole)
