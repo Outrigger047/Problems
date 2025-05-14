@@ -119,7 +119,7 @@ namespace Problems
         {
             Console.Write("Enter string: ");
             var input = Console.ReadLine();
-            var inputChars = input.ToLower().Replace(" ", string.Empty).ToCharArray();
+            var inputChars = input?.ToLower().Replace(" ", string.Empty).ToCharArray() ?? string.Empty.ToCharArray();
 
             bool isPalindrome = true;
             for (int i = 0; i < inputChars.Length / 2; i += 1)
