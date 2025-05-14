@@ -3,7 +3,7 @@ namespace Problems
     /// <summary>
     /// Custom singly-linked list
     /// </summary>
-    /// <typeparam name="T"/>
+    /// <typeparam name="T">Type to store in the list</typeparam>
     public class LinkedList<T>
     {
         /// <summary>
@@ -102,6 +102,12 @@ namespace Problems
         /// <exception cref="IndexOutOfRangeException"></exception>
         private Node<T> TraverseToIndex(Node<T> start, int targetIndex, int i = 0)
         {
+            // Prevent initial invocation with a custom start location that could overrun list bounds
+            if (start != _head && i == 0)
+            {
+                throw new ArgumentException("Direct invocation without start node at list head could overrun list bounds.");
+            }
+
             if (targetIndex <= _count - 1)
             {
                 if (start.Next is null || targetIndex == 0 || i == targetIndex)
@@ -123,7 +129,9 @@ namespace Problems
         /// List node
         /// </summary>
         /// <typeparam name="T"/>
+#pragma warning disable CS0693 // Type parameter has the same name as the type parameter from outer type
         private class Node<T>
+#pragma warning restore CS0693 // Type parameter has the same name as the type parameter from outer type
         {
             /// <summary>
             /// List item
