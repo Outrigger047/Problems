@@ -133,6 +133,10 @@ namespace Problems
                     Console.CursorLeft = Console.CursorLeft + whitespace;
                 }
 
+                /// TODO If the output of this is larger than the console buffer
+                /// some of the output seems like it is being considered as input for the
+                /// main menu and we see the "Bad method number" error text
+
                 Console.WriteLine();
                 Console.WriteLine();
             }
