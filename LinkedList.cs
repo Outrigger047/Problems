@@ -99,7 +99,8 @@ namespace Problems
         /// <param name="start">Start node</param>
         /// <param name="targetIndex">Node to retrieve</param>
         /// <returns>Specified node in the list</returns>
-        /// <exception cref="IndexOutOfRangeException"></exception>
+        /// <exception cref="ArgumentException">Direct invocation without start node at list head could overrun list bounds</exception>
+        /// <exception cref="IndexOutOfRangeException">Inde value beyond range of list size</exception>
         private Node<T> TraverseToIndex(Node<T> start, int targetIndex, int i = 0)
         {
             // Prevent initial invocation with a custom start location that could overrun list bounds
