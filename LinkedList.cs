@@ -9,7 +9,7 @@ namespace Problems
     public class LinkedList<T> : IEnumerable<T>
     {
         /// <summary>
-        /// Head node
+        /// First node in the list
         /// </summary>
         private Node<T> _head;
         /// <summary>
@@ -43,9 +43,14 @@ namespace Problems
         }
 
         /// <summary>
-        /// Gets the current number of elements in the list
+        /// Number of elements in the list
         /// </summary>
         public int Count => _count;
+
+        /// <summary>
+        /// First node in the list
+        /// </summary>
+        public Node<T> Head => _head;
 
         /// <summary>
         /// Indexer declaration
@@ -142,26 +147,47 @@ namespace Problems
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new 
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public class LLEnum : IEnumerator
         {
-            public object Current => throw new NotImplementedException();
+            private LinkedList<T> _list;
+            private Node<T> _currentNode;
+            private Node<T> _initNode;
+            object IEnumerator.Current => _currentNode.Item!;
+
+            public LLEnum(LinkedList<T> list)
+            {
+                _list = list;
+                _initNode = new() { Item = default!, Next = _list.Head };
+                _currentNode = _initNode;
+            }
 
             public bool MoveNext()
             {
-                throw new NotImplementedException();
+                if (_currentNode.Next is not null)
+                {
+                    _currentNode = _currentNode.Next;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
 
             public void Reset()
             {
-                throw new NotImplementedException();
+                _currentNode = _initNode;
             }
         }
 
@@ -170,7 +196,7 @@ namespace Problems
         /// </summary>
         /// <typeparam name="T"/>
 #pragma warning disable CS0693 // Type parameter has the same name as the type parameter from outer type
-        private class Node<T>
+        public class Node<T>
 #pragma warning restore CS0693 // Type parameter has the same name as the type parameter from outer type
         {
             /// <summary>
