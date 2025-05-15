@@ -296,5 +296,22 @@ namespace Problems
                 Console.Write($"{number} ");
             }
         }
+
+        /// <summary>
+        /// Write a function that rotates a list by k elements. For example [1,2,3,4,5,6] rotated by two
+        /// becomes [3,4,5,6,1,2]. Try solving this without creating a copy of the list. How many swap
+        /// or move operations do you need?
+        /// </summary>
+        /// <remarks>
+        /// Soltuion is public method <see cref="LinkedList{T}.RotateK(int)"/>
+        /// </remarks>
+        private static void RotateK()
+        {
+            Console.Write("Specify k value: ");
+            var k = int.Parse(Console.ReadLine()!);
+
+            var ll = new LinkedList<int>(ListHelpers.GetNumsCollectionRandom(25, 100, writeConsole: true));
+            ll.RotateK(k);
+        }
     }
 }

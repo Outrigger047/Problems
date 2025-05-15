@@ -1,10 +1,12 @@
+using System.Collections;
+
 namespace Problems
 {
     /// <summary>
     /// Custom singly-linked list
     /// </summary>
     /// <typeparam name="T">Type to store in the list</typeparam>
-    public class LinkedList<T>
+    public class LinkedList<T> : IEnumerable<T>
     {
         /// <summary>
         /// Head node
@@ -75,6 +77,18 @@ namespace Problems
         }
 
         /// <summary>
+        /// Rotates the list by the specified number of elements
+        /// </summary>
+        /// <param name="k">Number of elements to rotate</param>
+        public void RotateK(int k)
+        {
+            TraverseToEnd(_head).Next = _head;
+            var newHead = TraverseToIndex(_head, k);
+            TraverseToIndex(_head, k - 1).Next = null;
+            _head = newHead;
+        }
+
+        /// <summary>
         /// Traverses the list and returns the final element
         /// </summary>
         /// <remarks>Recursive implementation</remarks>
@@ -123,6 +137,31 @@ namespace Problems
             else
             {
                 throw new IndexOutOfRangeException($"Index value {targetIndex} beyond range of list size {_count}");
+            }
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public class LLEnum : IEnumerator
+        {
+            public object Current => throw new NotImplementedException();
+
+            public bool MoveNext()
+            {
+                throw new NotImplementedException();
+            }
+
+            public void Reset()
+            {
+                throw new NotImplementedException();
             }
         }
 
