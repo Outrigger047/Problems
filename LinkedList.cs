@@ -109,13 +109,30 @@ namespace Problems
 
         public override string ToString()
         {
-            var sb = new StringBuilder($"List contents ({_count} {typeof(T).Name}): ");
+            var sb = new StringBuilder();
             foreach (var item in this)
             {
                 sb.Append($"{item?.ToString()} " ?? string.Empty);
             }
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// ToString override with additional verbosity option
+        /// </summary>
+        /// <param name="verbose">Prints element count and type if true</param>
+        /// <returns>List contents as a string</returns>
+        public string ToString(bool verbose = false)
+        {
+            if (verbose)
+            {
+                return $"List contents ({_count} {typeof(T).Name}): " + ToString();
+            }
+            else
+            {
+                return ToString();
+            }
         }
 
         /// <summary>
