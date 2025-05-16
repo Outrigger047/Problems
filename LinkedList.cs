@@ -12,11 +12,16 @@ namespace Problems
         /// <summary>
         /// First node in the list
         /// </summary>
-        private Node<T> _head;
+        private Node<T>? _head;
         /// <summary>
         /// Number of elements currently in the list
         /// </summary>
         private int _count;
+
+        /// <summary>
+        /// Empty default ctor mainly for collection initialization
+        /// </summary>
+        public LinkedList() { }
 
         /// <summary>
         /// Instantiates a <see cref="LinkedList{T}"/> with a single item
@@ -39,7 +44,7 @@ namespace Problems
 
             foreach (var item in initialCollection.Skip(1))
             {
-                Append(item);
+                Add(item);
             }
         }
 
@@ -51,22 +56,30 @@ namespace Problems
         /// <summary>
         /// First node in the list
         /// </summary>
-        public Node<T> Head => _head;
+        public Node<T> Head => _head!;
 
         /// <summary>
         /// Indexer declaration
         /// </summary>
         /// <param name="index">Index value</param>
         /// <returns>List item at specified index</returns>
-        public T this[int index] => TraverseToIndex(_head, index).Item;
+        public T this[int index] => TraverseToIndex(_head!, index).Item;
 
         /// <summary>
         /// Add a new item to the end of the list
         /// </summary>
         /// <param name="itemToAdd">Item to add</param>
-        public void Append(T itemToAdd)
+        public void Add(T itemToAdd)
         {
-            TraverseToEnd(_head).Next = new Node<T> { Item = itemToAdd };
+            if (_head is not null)
+            {
+                TraverseToEnd(_head).Next = new Node<T> { Item = itemToAdd };
+            }
+            else
+            {
+                _head = new Node<T> { Item = itemToAdd };
+            }
+
             _count += 1;
         }
 
@@ -74,11 +87,11 @@ namespace Problems
         /// Add multiple items to the end of the list
         /// </summary>
         /// <param name="itemsToAdd">Collection of items to add</param>
-        public void Append(ICollection<T> itemsToAdd)
+        public void Add(ICollection<T> itemsToAdd)
         {
             foreach (var item in itemsToAdd)
             {
-                Append(item);
+                Add(item);
             }
         }
 
@@ -88,9 +101,9 @@ namespace Problems
         /// <param name="k">Number of elements to rotate</param>
         public void RotateK(int k)
         {
-            TraverseToEnd(_head).Next = _head;
-            var newHead = TraverseToIndex(_head, k);
-            TraverseToIndex(_head, k - 1).Next = null;
+            TraverseToEnd(Head).Next = _head;
+            var newHead = TraverseToIndex(Head, k);
+            TraverseToIndex(Head, k - 1).Next = null;
             _head = newHead;
         }
 
