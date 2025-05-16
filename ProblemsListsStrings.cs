@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace Problems
 {
     public partial class Program
@@ -173,7 +175,7 @@ namespace Problems
             var sum = ListHelpers.AddNums(numbers);
             Console.WriteLine($"Sum: {sum}");
         }
-        
+
         /// <summary>
         /// Write a function on_all that applies a function to every element of a list. Use it to print
         /// the first twenty perfect squares. The perfect squares can be found by multiplying each natural
@@ -314,11 +316,17 @@ namespace Problems
 
             var ll = new LinkedList<int>(ListHelpers.GetNumsCollectionRandom(size, 100, writeConsole: false));
 
-            Console.WriteLine(ll.ToString());
+            Console.WriteLine(ll);
 
             ll.RotateK(k);
 
-            Console.WriteLine("Rotated " + ll.ToString());
+            Console.WriteLine("Rotated " + ll);
+        }
+
+        private static void ListPlay()
+        {
+            var l = new LinkedList<string> { "asdf", "eqwe", "fdfe" };
+            Console.WriteLine(l);
         }
     }
 }
