@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace Problems
@@ -323,10 +324,56 @@ namespace Problems
             Console.WriteLine("Rotated " + ll);
         }
 
-        private static void ListPlay()
+        /// <summary>
+        /// Write a function that computes the list of the first 100 Fibonacci numbers. The first two Fibonacci
+        /// numbers are 1 and 1. The n+1-st Fibonacci number can be computed by adding the n-th and the n-1-th
+        /// Fibonacci number. The first few are therefore 1, 1, 1+1=2, 1+2=3, 2+3=5, 3+5=8.
+        /// </summary>
+        private static void Fib100()
         {
-            var l = new LinkedList<string> { "asdf", "eqwe", "fdfe" };
-            Console.WriteLine(l);
+            // Performance comparison just for funsies
+            
+            // Linked list is a dumb data structure for this
+            var fib100LL = new LinkedList<Int128> { 1, 1 };
+            var s = new Stopwatch();
+
+            s.Start();
+            for (int i = 2; i < 100; i += 1)
+            {
+                checked
+                {
+                    fib100LL.Add(fib100LL[fib100LL.Count - 1] + fib100LL[fib100LL.Count - 2]);
+                }
+            }
+
+            s.Stop();
+            Console.WriteLine(fib100LL);
+            Console.WriteLine($"Took {s.ElapsedTicks} ticks");
+            Console.WriteLine();
+            s.Reset();
+
+            // Array should be much faster
+            var fib100Arr = new Int128[100];
+            fib100Arr[0] = 1;
+            fib100Arr[1] = 1;
+
+            s.Start();
+            for (int i = 2; i < 100; i += 1)
+            {
+                checked
+                {
+                    fib100Arr[i] = fib100Arr[i - 1] + fib100Arr[i - 2];
+                }
+            }
+
+            s.Stop();
+            foreach (var num in fib100Arr)
+            {
+                Console.Write($"{num} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine($"Took {s.ElapsedTicks} ticks");
+            s.Reset();
         }
     }
 }
