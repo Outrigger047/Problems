@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Text;
 
 namespace Problems
 {
@@ -91,6 +92,17 @@ namespace Problems
             var newHead = TraverseToIndex(_head, k);
             TraverseToIndex(_head, k - 1).Next = null;
             _head = newHead;
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder($"List contents ({_count} {typeof(T).Name}): ");
+            foreach (var item in this)
+            {
+                sb.Append($"{item?.ToString()} " ?? string.Empty);
+            }
+
+            return sb.ToString();
         }
 
         /// <summary>

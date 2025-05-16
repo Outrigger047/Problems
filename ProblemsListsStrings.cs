@@ -314,23 +314,11 @@ namespace Problems
 
             var ll = new LinkedList<int>(ListHelpers.GetNumsCollectionRandom(size, 100, writeConsole: false));
 
-            Console.Write($"Linked list contents ({ll.Count}): ");
-            foreach (var num in ll)
-            {
-                Console.Write($"{num} ");
-            }
-            
-            Console.WriteLine();
+            Console.WriteLine(ll.ToString());
 
             ll.RotateK(k);
 
-            Console.Write($"Rotated linked list contents ({ll.Count}): ");
-            foreach (var num in ll)
-            {
-                Console.Write($"{num} ");
-            }
-            
-            Console.WriteLine();
+            Console.WriteLine("Rotated " + ll.ToString());
         }
     }
 }
