@@ -310,8 +310,25 @@ namespace Problems
             Console.Write("Specify k value: ");
             var k = int.Parse(Console.ReadLine()!);
 
-            var ll = new LinkedList<int>(ListHelpers.GetNumsCollectionRandom(25, 100, writeConsole: true));
+            var ll = new LinkedList<int>(ListHelpers.GetNumsCollectionRandom(25, 100, writeConsole: false));
+
+            Console.Write("Linked list contents: ");
+            foreach (var num in ll)
+            {
+                Console.Write($"{num} ");
+            }
+            
+            Console.WriteLine();
+
             ll.RotateK(k);
+
+            Console.Write("Rotated linked list contents: ");
+            foreach (var num in ll)
+            {
+                Console.Write($"{num} ");
+            }
+            
+            Console.WriteLine();
         }
     }
 }
