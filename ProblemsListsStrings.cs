@@ -309,10 +309,12 @@ namespace Problems
         {
             Console.Write("Specify k value: ");
             var k = int.Parse(Console.ReadLine()!);
+            Console.Write("Specify list size: ");
+            var size = int.Parse(Console.ReadLine()!);
 
-            var ll = new LinkedList<int>(ListHelpers.GetNumsCollectionRandom(25, 100, writeConsole: false));
+            var ll = new LinkedList<int>(ListHelpers.GetNumsCollectionRandom(size, 100, writeConsole: false));
 
-            Console.Write("Linked list contents: ");
+            Console.Write($"Linked list contents ({ll.Count}): ");
             foreach (var num in ll)
             {
                 Console.Write($"{num} ");
@@ -322,7 +324,7 @@ namespace Problems
 
             ll.RotateK(k);
 
-            Console.Write("Rotated linked list contents: ");
+            Console.Write($"Rotated linked list contents ({ll.Count}): ");
             foreach (var num in ll)
             {
                 Console.Write($"{num} ");
