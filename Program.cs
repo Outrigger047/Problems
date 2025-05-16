@@ -28,7 +28,7 @@ namespace Problems
                     methods[userSelection - 1].Invoke(null, null);
                     Console.WriteLine();
                 }
-                catch(Exception)
+                catch(ArgumentOutOfRangeException)
                 {
                     Console.WriteLine("Bad method number");
                 }
