@@ -147,25 +147,29 @@ namespace Problems
 
         public IEnumerator<T> GetEnumerator()
         {
-            return new 
+            return new LLEnumerator(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            
+            return new LLEnumerator(this);
         }
 
         /// <summary>
-        /// 
+        /// Enumerator implementation for <see cref="LinkedList{T}"/>
         /// </summary>
-        public class LLEnum : IEnumerator
+        public class LLEnumerator : IEnumerator<T>
         {
             private LinkedList<T> _list;
             private Node<T> _currentNode;
             private Node<T> _initNode;
+            private bool disposedValue;
+
             object IEnumerator.Current => _currentNode.Item!;
 
-            public LLEnum(LinkedList<T> list)
+            public T Current => _currentNode.Item;
+
+            public LLEnumerator(LinkedList<T> list)
             {
                 _list = list;
                 _initNode = new() { Item = default!, Next = _list.Head };
@@ -188,6 +192,28 @@ namespace Problems
             public void Reset()
             {
                 _currentNode = _initNode;
+            }
+
+            protected virtual void Dispose(bool disposing)
+            {
+                if (!disposedValue)
+                {
+                    if (disposing)
+                    {
+                        // TODO: dispose managed state (managed objects)
+                    }
+
+                    // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                    // TODO: set large fields to null
+                    disposedValue = true;
+                }
+            }
+
+            public void Dispose()
+            {
+                // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+                Dispose(disposing: true);
+                GC.SuppressFinalize(this);
             }
         }
 
