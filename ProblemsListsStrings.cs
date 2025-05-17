@@ -429,19 +429,19 @@ namespace Problems
             var stopwatch = new Stopwatch();
 
             Console.WriteLine("Selection sort: "
-                + ListHelpers.SelectionSort(numsToSort, stopwatch)
+                + SortAlgorithms.SelectionSort(numsToSort, stopwatch)
                 + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
             Console.WriteLine("Insertion sort: "
-                + ListHelpers.InsertionSort(numsToSort, stopwatch)
+                + SortAlgorithms.InsertionSort(numsToSort, stopwatch)
                 + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
             Console.WriteLine("Merge sort: "
-                + ListHelpers.MergeSort(numsToSort, stopwatch)
+                + SortAlgorithms.MergeSort(numsToSort, stopwatch)
                 + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
             Console.WriteLine("Quicksort: "
-                + ListHelpers.InsertionSort(numsToSort, stopwatch)
+                + SortAlgorithms.InsertionSort(numsToSort, stopwatch)
                 + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
             Console.WriteLine("Stooge sort: "
-                + ListHelpers.InsertionSort(numsToSort, stopwatch)
+                + SortAlgorithms.InsertionSort(numsToSort, stopwatch)
                 + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
         }
 
