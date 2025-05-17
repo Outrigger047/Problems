@@ -114,8 +114,8 @@ namespace Problems
         /// <summary>
         /// Selection sort
         /// </summary>
-        /// <typeparam name="T">Type of data to sort</typeparam>
-        /// <param name="toSort">Collection to sort</param>
+        /// <param name="toSortIn">Collection of items to be sorted</param>
+        /// <param name="stopwatch">Initialized <see cref="Stopwatch"/> for performance purposes</param>
         /// <returns>Sorted collection</returns>
         public static LinkedList<int> SelectionSort(ICollection<int> toSortIn, Stopwatch stopwatch)
         {
@@ -143,6 +143,12 @@ namespace Problems
             return sorted;
         }
 
+        /// <summary>
+        /// Insertion sort
+        /// </summary>
+        /// <param name="toSortIn">Collection of items to be sorted</param>
+        /// <param name="stopwatch">Initialized <see cref="Stopwatch"/> for performance purposes</param>
+        /// <returns>Sorted collection</returns>
         public static LinkedList<int> InsertionSort(ICollection<int> toSortIn, Stopwatch stopwatch)
         {
             stopwatch.Reset();
@@ -150,12 +156,18 @@ namespace Problems
             var toSort = new List<int>(toSortIn);
             var sorted = new LinkedList<int>();
 
-            
+
 
             stopwatch.Stop();
             return sorted;
         }
 
+        /// <summary>
+        /// Merge sort
+        /// </summary>
+        /// <param name="toSortIn">Collection of items to be sorted</param>
+        /// <param name="stopwatch">Initialized <see cref="Stopwatch"/> for performance purposes</param>
+        /// <returns>Sorted collection</returns>
         public static LinkedList<int> MergeSort(ICollection<int> toSortIn, Stopwatch stopwatch)
         {
             throw new NotImplementedException();
@@ -168,6 +180,12 @@ namespace Problems
             return sorted;
         }
 
+        /// <summary>
+        /// Quicksort
+        /// </summary>
+        /// <param name="toSortIn">Collection of items to be sorted</param>
+        /// <param name="stopwatch">Initialized <see cref="Stopwatch"/> for performance purposes</param>
+        /// <returns>Sorted collection</returns>
         public static LinkedList<int> QuickSort(ICollection<int> toSortIn, Stopwatch stopwatch)
         {
             throw new NotImplementedException();
@@ -180,6 +198,12 @@ namespace Problems
             return sorted;
         }
 
+        /// <summary>
+        /// Stoogesort lol
+        /// </summary>
+        /// <param name="toSortIn">Collection of items to be sorted</param>
+        /// <param name="stopwatch">Initialized <see cref="Stopwatch"/> for performance purposes</param>
+        /// <returns>Sorted collection</returns>
         public static LinkedList<int> StoogeSort(ICollection<int> toSortIn, Stopwatch stopwatch)
         {
             throw new NotImplementedException();
