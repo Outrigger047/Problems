@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 
 namespace Problems
@@ -323,10 +325,183 @@ namespace Problems
             Console.WriteLine("Rotated " + ll);
         }
 
-        private static void ListPlay()
+        /// <summary>
+        /// Write a function that computes the list of the first 100 Fibonacci numbers. The first two Fibonacci
+        /// numbers are 1 and 1. The n+1-st Fibonacci number can be computed by adding the n-th and the n-1-th
+        /// Fibonacci number. The first few are therefore 1, 1, 1+1=2, 1+2=3, 2+3=5, 3+5=8.
+        /// </summary>
+        private static void Fib100()
         {
-            var l = new LinkedList<string> { "asdf", "eqwe", "fdfe" };
-            Console.WriteLine(l);
+            // Performance comparison just for funsies
+            Console.WriteLine("Performance comparison just for funzies");
+
+            // Linked list is a dumb data structure for this
+            var fib100LL = new LinkedList<Int128> { 1, 1 };
+            var s = new Stopwatch();
+
+            s.Start();
+            for (int i = 2; i < 100; i += 1)
+            {
+                checked
+                {
+                    fib100LL.Add(fib100LL[fib100LL.Count - 1] + fib100LL[fib100LL.Count - 2]);
+                }
+            }
+
+            s.Stop();
+            Console.WriteLine("Linked list is a bad datatype to use for this: ");
+            Console.WriteLine(fib100LL);
+            Console.WriteLine($"Took {s.ElapsedTicks} ticks");
+            Console.WriteLine();
+            s.Reset();
+
+            // Array should be much faster
+            var fib100Arr = new Int128[100];
+            fib100Arr[0] = 1;
+            fib100Arr[1] = 1;
+
+            s.Start();
+            for (int i = 2; i < 100; i += 1)
+            {
+                checked
+                {
+                    fib100Arr[i] = fib100Arr[i - 1] + fib100Arr[i - 2];
+                }
+            }
+
+            s.Stop();
+            Console.WriteLine("Array is smart!");
+            foreach (var num in fib100Arr)
+            {
+                Console.Write($"{num} ");
+            }
+            Console.WriteLine();
+            Console.WriteLine($"Took {s.ElapsedTicks} ticks");
+            s.Reset();
         }
+
+        /// <summary>
+        /// Write a function that takes a number and returns a list of its digits. So for 2342 it should return [2,3,4,2].
+        /// </summary>
+        private static void ListDigits()
+        {
+            Console.Write("Input number: ");
+            var num = int.Parse(Console.ReadLine()!);
+            var digits = new Stack<int>();
+
+            do
+            {
+                digits.Push(num % 10);
+                num = num / 10;
+            }
+            while (num > 10);
+
+            digits.Push(num);
+
+            foreach (var digit in digits)
+            {
+                Console.Write($"{digit} ");
+            }
+        }
+
+        /*
+        * Write functions that add, subtract, and multiply two numbers in their digit-list representation (and return a
+        * new digit list). If you’re ambitious you can implement Karatsuba multiplication. Try different bases. What is
+        * the best base if you care about speed? If you couldn’t completely solve the prime number exercise above due to
+        * the lack of large numbers in your language, you can now use your own library for this task.
+        */
+
+        /*
+        private static void AddDigitList()
+        {
+
+        }
+        */
+
+        /*
+        private static void SubtractDigitList()
+        {
+
+        }
+        */
+
+        /*
+        private static void KMultiply()
+        {
+
+        }
+        */
+        /*
+        /// <summary>
+        /// Write a function that takes a list of numbers, a starting base b1 and a target base b2 and interprets the list as
+        /// a number in base b1 and converts it into a number in base b2 (in the form of a list-of-digits). So for example 
+        /// [2,1,0] in base 3 gets converted to base 10 as [2,1].
+        /// </summary>
+        private static void BaseConversion()
+        {
+
+        }
+        */
+
+        /// <summary>
+        /// Implement the following sorting algorithms: Selection sort, Insertion sort, Merge sort, Quick sort, Stooge Sort. 
+        /// Check Wikipedia for descriptions.
+        /// </summary>
+        private static void AssortedSorts()
+        {
+            Console.Write("Input integers separated by spaces: ");
+            var numsToSort = new List<int>();
+            foreach (var num in Console.ReadLine()!.Split(' '))
+            {
+                numsToSort.Add(int.Parse(num));
+            }
+
+            var stopwatch = new Stopwatch();
+
+            Console.WriteLine("Selection sort: "
+                + ListHelpers.SelectionSort(numsToSort, stopwatch)
+                + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
+            Console.WriteLine("Insertion sort: "
+                + ListHelpers.InsertionSort(numsToSort, stopwatch)
+                + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
+            Console.WriteLine("Merge sort: "
+                + ListHelpers.MergeSort(numsToSort, stopwatch)
+                + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
+            Console.WriteLine("Quicksort: "
+                + ListHelpers.InsertionSort(numsToSort, stopwatch)
+                + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
+            Console.WriteLine("Stooge sort: "
+                + ListHelpers.InsertionSort(numsToSort, stopwatch)
+                + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
+        }
+
+        /*
+        /// <summary>
+        /// Implement binary search.
+        /// </summary>
+        private static void BinarySearch()
+        {
+
+        }
+        */
+        /*
+        /// <summary>
+        /// Write a function that takes a list of strings an prints them, one per line, in a rectangular frame. For example, 
+        /// the list ["Hello", "World", "in", "a", "frame"] gets printed as:
+        /// 
+        ///   *********
+        ///   * Hello *
+        ///   * World *
+        ///   * in    *
+        ///   * a     *
+        ///   * frame *
+        ///   *********
+        /// 
+        /// </summary>
+        private static void FramedText()
+        {
+
+        }
+        */
     }
 }

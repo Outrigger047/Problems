@@ -66,7 +66,7 @@ namespace Problems
         public T this[int index] => TraverseToIndex(_head!, index).Item;
 
         /// <summary>
-        /// Add a new item to the end of the list
+        /// Insert a new item at the end of the list
         /// </summary>
         /// <param name="itemToAdd">Item to add</param>
         public void Add(T itemToAdd)
@@ -84,7 +84,7 @@ namespace Problems
         }
 
         /// <summary>
-        /// Add multiple items to the end of the list
+        /// Insert multiple items at the end of the list
         /// </summary>
         /// <param name="itemsToAdd">Collection of items to add</param>
         public void Add(ICollection<T> itemsToAdd)
@@ -92,6 +92,33 @@ namespace Problems
             foreach (var item in itemsToAdd)
             {
                 Add(item);
+            }
+        }
+
+        /// <summary>
+        /// Insert an item at a specific location in the list
+        /// </summary>
+        /// <param name="itemToAdd">Item to add</param>
+        /// <param name="targetIndex">Location in the list to insert the item</param>
+        public void InsertAt(T itemToAdd, int targetIndex)
+        {
+            var before = TraverseToIndex(Head, targetIndex - 1);
+            var after = before.Next;
+            before.Next = new Node<T> { Item = itemToAdd, Next = after };
+        }
+
+        /// <summary>
+        /// Insert a collection of items at a specific location in the list
+        /// </summary>
+        /// <param name="itemsToAdd">Collection of items to add</param>
+        /// <param name="targetIndex">Location in the list to insert the items</param>
+        public void InsertAt(ICollection<T> itemsToAdd, int targetIndex)
+        {
+            int offset = 0;
+            foreach (var item in itemsToAdd)
+            {
+                InsertAt(item, targetIndex + offset);
+                offset += 1;
             }
         }
 
