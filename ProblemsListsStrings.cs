@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Runtime.CompilerServices;
 
 namespace Problems
 {
@@ -332,6 +331,7 @@ namespace Problems
         private static void Fib100()
         {
             // Performance comparison just for funsies
+            Console.WriteLine("Performance comparison just for funzies");
             
             // Linked list is a dumb data structure for this
             var fib100LL = new LinkedList<Int128> { 1, 1 };
@@ -347,6 +347,7 @@ namespace Problems
             }
 
             s.Stop();
+            Console.WriteLine("Linked list is a bad datatype to use for this: ");
             Console.WriteLine(fib100LL);
             Console.WriteLine($"Took {s.ElapsedTicks} ticks");
             Console.WriteLine();
@@ -367,6 +368,7 @@ namespace Problems
             }
 
             s.Stop();
+            Console.WriteLine("Array is smart!");
             foreach (var num in fib100Arr)
             {
                 Console.Write($"{num} ");
