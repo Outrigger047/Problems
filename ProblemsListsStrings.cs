@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace Problems
 {
@@ -397,13 +398,72 @@ namespace Problems
 
             digits.Push(num);
 
-            var digitsReverse = new LinkedList<int>();
             foreach (var digit in digits)
             {
-                digitsReverse.Add(digit);
+                Console.Write($"{digit} ");
             }
-
-            Console.WriteLine(digitsReverse);
         }
+
+        /*
+        /// <summary>
+        /// Write functions that add, subtract, and multiply two numbers in their digit-list representation (and return a
+        /// new digit list). If you’re ambitious you can implement Karatsuba multiplication. Try different bases. What is
+        /// the best base if you care about speed? If you couldn’t completely solve the prime number exercise above due to
+        /// the lack of large numbers in your language, you can now use your own library for this task.
+        /// </summary>
+        private static void Karatsuba()
+        {
+
+        }
+        */
+        /*
+        /// <summary>
+        /// Write a function that takes a list of numbers, a starting base b1 and a target base b2 and interprets the list as
+        /// a number in base b1 and converts it into a number in base b2 (in the form of a list-of-digits). So for example 
+        /// [2,1,0] in base 3 gets converted to base 10 as [2,1].
+        /// </summary>
+        private static void BaseConversion()
+        {
+
+        }
+        */
+        /*
+        /// <summary>
+        /// Implement the following sorting algorithms: Selection sort, Insertion sort, Merge sort, Quick sort, Stooge Sort. 
+        /// Check Wikipedia for descriptions.
+        /// </summary>
+        private static void AssortedSorts()
+        {
+
+        }
+        */
+        /*
+        /// <summary>
+        /// Implement binary search.
+        /// </summary>
+        private static void BinarySearch()
+        {
+
+        }
+        */
+        /*
+        /// <summary>
+        /// Write a function that takes a list of strings an prints them, one per line, in a rectangular frame. For example, 
+        /// the list ["Hello", "World", "in", "a", "frame"] gets printed as:
+        /// 
+        ///   *********
+        ///   * Hello *
+        ///   * World *
+        ///   * in    *
+        ///   * a     *
+        ///   * frame *
+        ///   *********
+        /// 
+        /// </summary>
+        private static void FramedText()
+        {
+
+        }
+        */
     }
 }
