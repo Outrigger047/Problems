@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Globalization;
 
 namespace Problems
 {
@@ -332,7 +333,7 @@ namespace Problems
         {
             // Performance comparison just for funsies
             Console.WriteLine("Performance comparison just for funzies");
-            
+
             // Linked list is a dumb data structure for this
             var fib100LL = new LinkedList<Int128> { 1, 1 };
             var s = new Stopwatch();
@@ -376,6 +377,33 @@ namespace Problems
             Console.WriteLine();
             Console.WriteLine($"Took {s.ElapsedTicks} ticks");
             s.Reset();
+        }
+
+        /// <summary>
+        /// Write a function that takes a number and returns a list of its digits. So for 2342 it should return [2,3,4,2].
+        /// </summary>
+        private static void ListDigits()
+        {
+            Console.Write("Input number: ");
+            var num = int.Parse(Console.ReadLine()!);
+            var digits = new Stack<int>();
+
+            do
+            {
+                digits.Push(num % 10);
+                num = num / 10;
+            }
+            while (num > 10);
+
+            digits.Push(num);
+
+            var digitsReverse = new LinkedList<int>();
+            foreach (var digit in digits)
+            {
+                digitsReverse.Add(digit);
+            }
+
+            Console.WriteLine(digitsReverse);
         }
     }
 }
