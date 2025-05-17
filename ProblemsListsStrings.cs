@@ -332,35 +332,10 @@ namespace Problems
         /// </summary>
         private static void Fib100()
         {
-            // Performance comparison just for funsies
-            Console.WriteLine("Performance comparison just for funzies");
-
-            // Linked list is a dumb data structure for this
-            var fib100LL = new LinkedList<Int128> { 1, 1 };
-            var s = new Stopwatch();
-
-            s.Start();
-            for (int i = 2; i < 100; i += 1)
-            {
-                checked
-                {
-                    fib100LL.Add(fib100LL[fib100LL.Count - 1] + fib100LL[fib100LL.Count - 2]);
-                }
-            }
-
-            s.Stop();
-            Console.WriteLine("Linked list is a bad datatype to use for this: ");
-            Console.WriteLine(fib100LL);
-            Console.WriteLine($"Took {s.ElapsedTicks} ticks");
-            Console.WriteLine();
-            s.Reset();
-
-            // Array should be much faster
             var fib100Arr = new Int128[100];
             fib100Arr[0] = 1;
             fib100Arr[1] = 1;
 
-            s.Start();
             for (int i = 2; i < 100; i += 1)
             {
                 checked
@@ -369,15 +344,10 @@ namespace Problems
                 }
             }
 
-            s.Stop();
-            Console.WriteLine("Array is smart!");
             foreach (var num in fib100Arr)
             {
                 Console.Write($"{num} ");
             }
-            Console.WriteLine();
-            Console.WriteLine($"Took {s.ElapsedTicks} ticks");
-            s.Reset();
         }
 
         /// <summary>
