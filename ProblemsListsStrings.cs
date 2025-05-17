@@ -427,16 +427,39 @@ namespace Problems
 
         }
         */
-        /*
+
         /// <summary>
         /// Implement the following sorting algorithms: Selection sort, Insertion sort, Merge sort, Quick sort, Stooge Sort. 
         /// Check Wikipedia for descriptions.
         /// </summary>
         private static void AssortedSorts()
         {
+            Console.Write("Input integers separated by spaces: ");
+            var numsToSort = new List<int>();
+            foreach (var num in Console.ReadLine()!.Split(' '))
+            {
+                numsToSort.Add(int.Parse(num));
+            }
 
+            var stopwatch = new Stopwatch();
+
+            Console.WriteLine("Selection sort: "
+                + ListHelpers.SelectionSort(numsToSort, stopwatch)
+                + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
+            Console.WriteLine("Insertion sort: "
+                + ListHelpers.InsertionSort(numsToSort, stopwatch)
+                + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
+            Console.WriteLine("Merge sort: "
+                + ListHelpers.MergeSort(numsToSort, stopwatch)
+                + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
+            Console.WriteLine("Quicksort: "
+                + ListHelpers.InsertionSort(numsToSort, stopwatch)
+                + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
+            Console.WriteLine("Stooge sort: "
+                + ListHelpers.InsertionSort(numsToSort, stopwatch)
+                + $"({stopwatch.ElapsedTicks} ticks, {stopwatch.ElapsedMilliseconds} msec)");
         }
-        */
+
         /*
         /// <summary>
         /// Implement binary search.
